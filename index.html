@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zoe Life — Studio</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent: #FFAD03;
+      --accent-deep: #70008C;
+      --black: #000000;
+      --white: #ffffff;
+      --max-width: 1200px;
+    }
+
+    /* --- Reset & base --- */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color:var(--black);
+      background:var(--white);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.35;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+
+    /* --- Scripture background --- */
+    .scripture-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 22vw;
+      letter-spacing: -8px;
+      line-height: 0.8;
+      color: rgba(112,0,140,0.06);
+      pointer-events: none;
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift {
+      0% { transform: translate(-4%, -4%) rotate(-3deg); }
+      100% { transform: translate(4%, 4%) rotate(3deg); }
+    }
+
+    /* --- Layout container --- */
+    .wrap{max-width:var(--max-width);margin:0 auto;padding:28px}
+
+    /* --- Top navigation --- */
+    nav{
+      display:flex;justify-content:space-between;align-items:center;padding:18px 0;position:fixed;left:0;right:0;z-index:40;
+      background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0));backdrop-filter:blur(6px);
+    }
+    nav .brand{font-family:'Montserrat',sans-serif;font-weight:900;letter-spacing:2px}
+    nav .menu{display:flex;gap:20px;font-size:0.95rem}
+    nav .menu a{padding:8px 10px;border-radius:999px}
+    nav .cta{background:var(--black);color:var(--white);padding:8px 14px;border-radius:20px;font-weight:600}
+
+    /* --- Avant-garde Hero --- */
+    .hero-experimental{
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .floating-image img{
+      width: 54vw;
+      mix-blend-mode: multiply;
+      filter: contrast(120%) saturate(130%);
+      transform: rotate(-8deg) translateY(0);
+      animation: float 12s ease-in-out infinite alternate;
+      border-radius:18px;
+      box-shadow:0 30px 45px rgba(0,0,0,0.25);
+    }
+    @keyframes float {
+      0%{transform: rotate(-8deg) translateY(-10px);}
+      100%{transform: rotate(-4deg) translateY(10px);}
+    }
+    .text-block{
+      position: absolute;
+      bottom: 10%;
+      left: 6%;
+      max-width: 380px;
+      color: var(--black);
+    }
+    .text-block .tag{font-weight:700;color:var(--accent-deep);letter-spacing:1px;margin-bottom:12px;display:block}
+    .text-block h1{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(36px,7vw,110px);line-height:0.9;margin-bottom:18px}
+    .text-block p{font-size:1.05rem;color:#222;max-width:400px;line-height:1.4}
+
+    .vertical-verse{
+      writing-mode: vertical-rl;
+      position: absolute;
+      right: 4%;
+      top: 10%;
+      font-size: 1.2rem;
+      letter-spacing: 6px;
+      opacity: 0.6;
+      font-weight: 700;
+    }
+
+    /* --- Statement section --- */
+    .statement{display:flex;align-items:center;gap:40px;padding:80px 0;flex-wrap:wrap}
+    .statement .text{flex:1}
+    .statement h2{font-family:'Montserrat',sans-serif;font-weight:900;font-size:48px;margin-bottom:12px}
+    .statement p{max-width:640px;color:#222}
+    .symbol{width:180px;height:180px;border-radius:12px;background:var(--accent-deep);display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:800;font-size:22px}
+
+    /* --- Film-strip Gallery --- */
+    .filmstrip{overflow-x:auto;padding:80px 0}
+    .strip{display:flex;gap:80px;padding:20px 40px;filter:grayscale(40%)}
+    .strip img{
+      width:380px;height:auto;border-radius:12px;
+      box-shadow:0 12px 30px rgba(0,0,0,0.25);
+      transform: rotate(-4deg);
+      transition: 0.4s;
+    }
+    .strip img:hover{
+      filter: grayscale(0%);
+      transform: rotate(0deg) scale(1.08);
+    }
+
+    /* --- About Poster Section --- */
+    .poster{
+      height: 100vh;
+      display: grid;
+      grid-template-columns:60% 40%;
+      align-items:center;
+      padding:0 28px;
+    }
+    .poster .bigword{
+      font-family:'Montserrat',sans-serif;
+      font-weight:900;
+      font-size:14vw;
+      line-height:0.9;
+      opacity:0.95;
+      color:var(--black);
+    }
+    .poster .bio img{width:100%;border-radius:6px;transform:rotate(-6deg);box-shadow:0 18px 40px rgba(0,0,0,0.12)}
+    .poster .bio p{margin-top:14px}
+
+    /* --- Communion CTA --- */
+    .communion{
+      padding:160px 0;
+      text-align:center;
+      border-top:1px solid rgba(0,0,0,0.1);
+    }
+    .communion h3{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2rem;margin-bottom:16px;}
+    .communion p{opacity:0.85;margin-bottom:28px}
+    .cross-grid{
+      width:120px;
+      height:120px;
+      margin:0 auto 20px;
+      background:
+        linear-gradient(#000 2px, transparent 2px),
+        linear-gradient(90deg,#000 2px, transparent 2px);
+      background-size: 100% 50%, 50% 100%;
+      background-position: top, left;
+    }
+    .btn-ghost{background:transparent;border:2px solid var(--black);padding:12px 18px;border-radius:10px;font-weight:700}
+
+    /* --- Footer --- */
+    footer{padding:28px 0;border-top:1px solid rgba(0,0,0,0.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    footer .social{display:flex;gap:16px}
+    footer .social a{display:inline-block;width:34px;height:34px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700}
+
+    /* --- Responsive --- */
+    @media (max-width:1024px){
+      .poster{grid-template-columns:1fr}
+      .poster .bio{justify-self:center}
+      .strip{gap:40px}
+    }
+    @media (max-width:480px){
+      nav .menu{display:none}
+      .wrap{padding:18px}
+      .strip{gap:24px;padding:20px}
+      .poster .bigword{font-size:10vw}
+    }
+  </style>
+</head>
+<body>
+  <div class="scripture-bg">Ἰησοῦς<br>Ζωή</div>
+
+  <nav>
+    <div class="wrap" style="display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:20px">
+        <div class="brand">ZOE LIFE</div>
+        <div class="menu">
+          <a href="#home">Home</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <a class="cta" href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main id="home">
+    <section class="hero-experimental">
+      <div class="floating-image">
+        <img src="img\hero.jpg" alt="Zoe Life hero">
+      </div>
+      <div class="text-block">
+        <span class="tag">Christian Design Studio</span>
+        <h1>Zoe Life</h1>
+        <p>Art that breathes hope • Devotional editorial expression.</p>
+      </div>
+      <div class="vertical-verse">Spirit & Life</div>
+    </section>
+
+    <section class="statement wrap" id="portfolio">
+      <div class="text">
+        <h2>Design with purpose. Creativity with spirit.</h2>
+        <p>At Zoe Life we create brand identities, limited-edition prints and campaign materials that centre spiritual themes without losing contemporary edge. Each project begins with scripture, moves through typographic exploration and results in striking, shareable visuals.</p>
+      </div>
+      <div class="symbol" style="background-color: #FFAD03;">
+        <img src="img\logo.jpg" alt="">
+      </div>
+    </section>
+
+    <section class="filmstrip wrap">
+      <h3 style="font-family:'Montserrat',sans-serif;font-weight:900;margin-bottom:28px">Selected collections</h3>
+      <div class="strip">
+        <img src="img\490448968_17883547062266667_5304951639499285351_n.jpg" alt="collection 1">
+        <img src="img\491439618_17884476240266667_8275852846725655724_n.jpg" alt="collection 2">
+        <img src="img\495085326_17885281275266667_6160467050306423797_n.jpg" alt="collection 3">
+      </div>
+    </section>
+
+    <section class="poster wrap" id="about">
+      <div class="bigword"><img src="img\logo.jpg" alt=""></div>
+      <div class="bio">
+        <img src="img\548882305_17901266760266667_5862576742370116789_n.jpg" alt="portrait">
+        <p>Zoe Life is led by a designer with a background in editorial design and faith-driven campaigns. The practice focuses on typographic boldness, photographic intimacy and material expression. Commissioned projects are consulted from concept through production, with an emphasis on ethical materials and community impact.</p>
+      </div>
+    </section>
+
+    <section class="communion wrap" id="contact">
+      <div class="cross-grid"></div>
+      <h3>Let’s create something inspired.</h3>
+      <p>Commissions, collaborations and brand projects — grounded in Christian themes and contemporary craft.</p>
+      <div style="display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap">
+        <a class="btn-ghost" href="mailto:hello@zoelife.example">hello@zoelife.example</a>
+        <a class="btn-ghost" href="#">Portfolio PDF</a>
+      </div>
+    </section>
+
+    <footer class="wrap">
+      <div>&copy; <strong>Zoe Life</strong> — All rights reserved</div>
+      <div class="social">
+        <a href="#" aria-label="instagram">IG</a>
+        <a href="#" aria-label="tiktok">TT</a>
+        <a href="#" aria-label="pinterest">PT</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Simple parallax for hero image
+    const hero = document.querySelector('.floating-image img');
+    document.querySelector('.hero-experimental').addEventListener('mousemove', e => {
+      const rect = hero.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      hero.style.transform = `rotate(-8deg) translate(${x*20}px, ${y*-15}px)`;
+    });
+    document.querySelector('.hero-experimental').addEventListener('mouseleave', ()=>{
+      hero.style.transform = 'rotate(-8deg) translateY(0)';
+    });
+
+    // Filmstrip horizontal scroll keyboard
+    document.querySelectorAll('.strip').forEach(car => {
+      car.tabIndex = 0;
+      car.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowRight') car.scrollBy({left:400,behavior:'smooth'});
+        if(e.key === 'ArrowLeft') car.scrollBy({left:-400,behavior:'smooth'});
+      });
+    });
+  </script>
+</body>
+</html>
